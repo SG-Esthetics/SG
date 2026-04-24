@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG Esthetics Salon — Lash | Brow | Beauty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf8f4;
+    --charcoal: #1a1510;
+    --gold: #c4a46d;
+    --gold-light: #e8d9b8;
+    --gold-muted: #a8997e;
+    --taupe: #8c8070;
+    --border: rgba(196,164,109,0.25);
+    --border-soft: rgba(26,21,16,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 85%, rgba(196,164,109,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 15%, rgba(196,164,109,0.10) 0%, transparent 50%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(600px, 90vw);
+    height: min(600px, 90vw);
+    border: 0.5px solid rgba(196,164,109,0.12);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-ornament::before {
+    content: '';
+    position: absolute;
+    inset: 30px;
+    border: 0.5px solid rgba(196,164,109,0.08);
+    border-radius: 50%;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 12vw, 110px);
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease 0.15s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold-muted);
+    text-transform: uppercase;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 2.5rem auto 0;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease 0.45s both;
+  }
+
+  .hero-contact {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease 0.6s both;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-contact a {
+    color: var(--gold-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+
+  .hero-contact a:hover { color: var(--gold-light); }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-muted);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    z-index: 1;
+    animation: fadeUp 1s ease 0.9s both;
+  }
+
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold-muted), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); transform-origin: top; }
+    50% { opacity: 1; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,248,244,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border-soft);
+    padding: 0 2rem;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo span { color: var(--gold); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+
+  .nav-book {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 0.5px solid var(--gold);
+    padding: 8px 18px;
+    transition: all 0.25s;
+  }
+
+  .nav-book:hover {
+    background: var(--gold);
+    color: var(--charcoal);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--border-soft);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .section-category {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 7vw, 70px);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--charcoal);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-note {
+    font-size: 10px;
+    color: var(--taupe);
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+
+  /* ── SERVICE CARD ── */
+  .service-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-card {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid var(--border-soft);
+    transition: background 0.25s;
+    position: relative;
+  }
+
+  .service-card:first-child { border-top: 0.5px solid var(--border-soft); }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: -2rem; right: -2rem; top: 0; bottom: 0;
+    background: var(--cream);
+    opacity: 0;
+    transition: opacity 0.25s;
+    z-index: -1;
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    padding-top: 4px;
+    white-space: nowrap;
+  }
+
+  .service-price .currency {
+    font-size: 14px;
+    vertical-align: super;
+    color: var(--gold-muted);
+  }
+
+  .service-body { flex: 1; }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: var(--taupe);
+    line-height: 1.75;
+    max-width: 520px;
+  }
+
+  .service-note {
+    font-size: 11px;
+    color: var(--gold-muted);
+    font-style: italic;
+    margin-top: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .service-duration {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    padding-top: 6px;
+    white-space: nowrap;
+  }
+
+  /* ── SIMPLE PRICE LIST (wax extras) ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 2rem;
+    border: 0.5px solid var(--border-soft);
+  }
+
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-right: 0.5px solid var(--border-soft);
+    border-bottom: 0.5px solid var(--border-soft);
+    transition: background 0.2s;
+  }
+
+  .price-item:hover { background: var(--cream); }
+
+  .price-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--charcoal);
+  }
+
+  .price-item-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section-sep {
+    border: none;
+    border-top: 0.5px solid var(--border-soft);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    color: var(--gold-muted);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(196,164,109,0.12) 0%, transparent 60%);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo em { font-style: italic; color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-links a {
+    color: var(--gold-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    transition: color 0.25s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-gst {
+    font-size: 10px;
+    color: rgba(168,153,126,0.5);
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── BOOK BANNER ── */
+  .book-banner {
+    background: var(--cream);
+    padding: 5rem 2rem;
+    text-align: center;
+    border-top: 0.5px solid var(--border-soft);
+    border-bottom: 0.5px solid var(--border-soft);
+  }
+
+  .book-banner-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .book-banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 62px);
+    font-weight: 300;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+
+  .book-banner-title em { font-style: italic; color: var(--gold); }
+
+  .book-btn {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--gold-light);
+    text-decoration: none;
+    padding: 16px 48px;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .book-btn:hover {
+    background: var(--gold);
+    color: var(--charcoal);
+  }
+
+  .book-contact {
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: var(--taupe);
+  }
+
+  .book-contact a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ── ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-section {
+    background: var(--charcoal);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(196,164,109,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%, rgba(196,164,109,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .reviews-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .reviews-header .section-category { color: var(--gold); }
+
+  .reviews-header .section-title { color: var(--gold-light); }
+
+  .reviews-header .section-title em { color: var(--gold); }
+
+  .google-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .google-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .google-logo {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gold-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .google-stars {
+    display: flex;
+    gap: 3px;
+  }
+
+  .star {
+    color: var(--gold);
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .rating-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .google-link {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 0.5px solid rgba(196,164,109,0.4);
+    padding: 8px 18px;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .google-link:hover {
+    background: var(--gold);
+    color: var(--charcoal);
+    border-color: var(--gold);
+  }
+
+  .reviews-divider {
+    width: 100%;
+    height: 0.5px;
+    background: rgba(196,164,109,0.2);
+    margin-bottom: 3rem;
+  }
+
+  .reviews-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    margin-bottom: 3rem;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid rgba(196,164,109,0.15);
+    padding: 2rem;
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  .review-card:hover {
+    background: rgba(196,164,109,0.06);
+    border-color: rgba(196,164,109,0.3);
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .review-author {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-muted);
+  }
+
+  .review-service {
+    font-size: 10px;
+    color: rgba(168,153,126,0.5);
+    margin-top: 2px;
+    letter-spacing: 0.08em;
+  }
+
+  .reviews-cta {
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .reviews-cta p {
+    font-size: 12px;
+    color: var(--gold-muted);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .service-card {
+      grid-template-columns: 60px 1fr;
+      gap: 1rem;
+    }
+    .service-duration { display: none; }
+    .section { padding: 4rem 1.25rem; }
+    .hero-contact { gap: 1.5rem; }
+    .reviews-carousel { grid-template-columns: 1fr; }
+    .reviews-header { flex-direction: column; align-items: flex-start; }
+    .google-badge { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <p class="hero-eyebrow">Interior Health Approved · Grand Forks, BC</p>
+  <h1 class="hero-title">SG<br><em>Esthetics</em></h1>
+  <p class="hero-subtitle">Lash &nbsp;·&nbsp; Brow &nbsp;·&nbsp; Waxing &nbsp;·&nbsp; Nails &nbsp;·&nbsp; PMU</p>
+  <div class="hero-divider"></div>
+  <div class="hero-contact">
+    <a href="tel:2504427850">250-442-7850</a>
+    <a href="https://instagram.com/sg.esthetics.salon" target="_blank">@sg.esthetics.salon</a>
+  </div>
+  <div class="scroll-cue">Services</div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">SG <span>Esthetics</span></div>
+    <ul class="nav-links">
+      <li><a href="#lash">Lash</a></li>
+      <li><a href="#brow">Brow</a></li>
+      <li><a href="#wax">Wax</a></li>
+      <li><a href="#pmu">PMU</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="tel:2504427850" class="nav-book">Book Now</a>
+  </div>
+</nav>
+
+<!-- LASH SERVICES -->
+<div id="lash">
+<div class="section">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-category">01 — Lash</p>
+      <h2 class="section-title">Lash<br><em>Services</em></h2>
+    </div>
+    <p class="section-note">Prices do not include GST</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>25</div>
+      <div class="service-body">
+        <h3 class="service-name">Lash Tint</h3>
+        <p class="service-desc">A semi-permanent treatment that tints your natural eyelashes a darker colour. Suitable for those with fair or blonde lashes.</p>
+        <p class="service-note">Lasts 4–6 weeks</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>110</div>
+      <div class="service-body">
+        <h3 class="service-name">Lash Lift & Tint</h3>
+        <p class="service-desc">A low-maintenance treatment that perms and darkens your natural eyelashes, making them look longer and more defined without extensions or mascara. The lift curls lashes upward from the base while the tint adds a dark colour.</p>
+        <p class="service-note">Lasts 4–8 weeks</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-sep">
+
+<!-- BROW SERVICES -->
+<div id="brow">
+<div class="section">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-category">02 — Brow</p>
+      <h2 class="section-title">Brow<br><em>Services</em></h2>
+    </div>
+    <p class="section-note">Prices do not include GST</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>20</div>
+      <div class="service-body">
+        <h3 class="service-name">Brow Tint</h3>
+        <p class="service-desc">Adds colour &amp; depth to brow hairs. Ideal for anyone looking to enhance their natural brows with a low-maintenance option, especially those with blonde or grey brow hair.</p>
+        <p class="service-note">Lasts 3–5 weeks on hairs</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>40</div>
+      <div class="service-body">
+        <h3 class="service-name">Brow Wax & Tint</h3>
+        <p class="service-desc">Brows are tinted to add colour, then waxed using a gentle hypoallergenic hard wax to remove unwanted hairs and create a clean, flattering shape.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>45</div>
+      <div class="service-body">
+        <h3 class="service-name">Brow Sculpt</h3>
+        <p class="service-desc">Brow shape is mapped out, then a specialized dye is applied that colours both the brow hairs and the skin underneath, creating a fuller, more defined, makeup-like look. Followed by a wax. Ideal for achieving sleek, bold, more defined brows.</p>
+        <p class="service-note">Stains skin up to 1 week · Hairs up to 7 weeks</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>80</div>
+      <div class="service-body">
+        <h3 class="service-name">Brow Lamination</h3>
+        <p class="service-desc">Eyebrow hairs are restructured by smoothing &amp; taming them. Allows for more styling flexibility to make them appear fuller, thicker, or more uniform and hold their shape better. Includes wax &amp; tint / dye.</p>
+        <p class="service-note">Lasts 4–6 weeks</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-sep">
+
+<!-- WAX SERVICES -->
+<div id="wax">
+<div class="section">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-category">03 — Wax</p>
+      <h2 class="section-title">Wax<br><em>Services</em></h2>
+    </div>
+    <p class="section-note">Prices do not include GST</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>40</div>
+      <div class="service-body">
+        <h3 class="service-name">Bikini</h3>
+        <p class="service-desc">Removes hair visible outside a bathing suit or underwear line.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>50</div>
+      <div class="service-body">
+        <h3 class="service-name">Bikini Plus</h3>
+        <p class="service-desc">AKA "French Bikini". More than a standard bikini wax, but less than a Brazilian. Removes hair from outside the bikini line and further in from the sides. Leaves a strip or triangle in the front and doesn't remove any hair from the back.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>65</div>
+      <div class="service-body">
+        <h3 class="service-name">Brazilian</h3>
+        <p class="service-desc">Removes all hair from the front, back, and between the buttocks — a small strip or triangle can be left. Uses an advanced technique and the best quality hypoallergenic wax to provide the most quick, seamless &amp; comfortable wax. Suitable for all clients, even those with highly sensitive skin.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick price grid -->
+  <div class="reveal" style="margin-top: 3rem;">
+    <p style="font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Additional Services</p>
+    <div class="price-grid">
+      <div class="price-item">
+        <span class="price-item-name">Underarm</span>
+        <span class="price-item-amount">$20</span>
+      </div>
+      <div class="price-item">
+        <span class="price-item-name">Lip / Chin / Cheek</span>
+        <span class="price-item-amount">$10 ea.</span>
+      </div>
+      <div class="price-item">
+        <span class="price-item-name">Half Leg</span>
+        <span class="price-item-amount">$55</span>
+      </div>
+      <div class="price-item">
+        <span class="price-item-name">Eyebrow</span>
+        <span class="price-item-amount">$20</span>
+      </div>
+      <div class="price-item">
+        <span class="price-item-name">Full Leg</span>
+        <span class="price-item-amount">$70</span>
+      </div>
+      <div class="price-item">
+        <span class="price-item-name">Full Face</span>
+        <span class="price-item-amount">$45</span>
+      </div>
+      <div class="price-item">
+        <span class="price-item-name">Belly Strip</span>
+        <span class="price-item-amount">$10</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="section-sep">
+
+<!-- PMU SERVICES -->
+<div id="pmu">
+<div class="section">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-category">04 — PMU</p>
+      <h2 class="section-title">PMU<br><em>Services</em></h2>
+    </div>
+    <p class="section-note">Prices do not include GST</p>
+  </div>
+
+  <div class="service-grid">
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>350</div>
+      <div class="service-body">
+        <h3 class="service-name">Microblading</h3>
+        <p class="service-desc">A semi-permanent cosmetic tattooing technique that uses a manual, handheld tool with tiny needles to create realistic, hair-like strokes in the eyebrow area. This process deposits pigment into the upper layer of the skin to simulate natural eyebrow hairs, resulting in a fuller, more defined, and low-maintenance brow shape.</p>
+        <p class="service-note">Follow-up appointment required 4–6 weeks after first appointment — $125</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>365</div>
+      <div class="service-body">
+        <h3 class="service-name">Powder Brows</h3>
+        <p class="service-desc">A semi-permanent cosmetic tattooing technique that creates a soft, shaded, and filled-in look, much like the effect of using eyebrow powder or a pencil. This method uses a specialized machine to deposit tiny, pixelated dots of pigment into the upper layers of the skin, resulting in a natural-looking, defined eyebrow shape.</p>
+        <p class="service-note">Follow-up appointment required 4–6 weeks after first appointment — $125</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>400</div>
+      <div class="service-body">
+        <h3 class="service-name">Combo Brows</h3>
+        <p class="service-desc">AKA hybrid brows — blends natural hair strokes at the front with powder shading throughout the middle &amp; tail, for a fuller &amp; more defined, yet realistic look. Combines the best of both techniques for enhanced depth and coverage, suitable for those needing more density than Microblading alone offers.</p>
+        <p class="service-note">Follow-up appointment required 4–6 weeks after first appointment — $125</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-price"><span class="currency">$</span>200</div>
+      <div class="service-body">
+        <h3 class="service-name">Refresher</h3>
+        <p class="service-desc">PMU refresher appointments are maintenance sessions necessary to restore the colour, intensity, definition, and shape of cosmetic tattoos that have naturally faded over time. These appointments are typically recommended every 2–3 years for existing clients.</p>
+        <p class="service-note">Timing varies based on lifestyle, skin type, PMU type and desired look</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REVIEWS SECTION -->
+<div id="reviews">
+<section class="reviews-section">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <div>
+        <p class="section-category">05 — Reviews</p>
+        <h2 class="section-title">What Clients<br><em>Are Saying</em></h2>
+      </div>
+      <div class="google-badge">
+        <div class="google-rating-row">
+          <span class="rating-num">5.0</span>
+          <div class="google-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="google-logo">Google</span>
+        </div>
+        <a href="https://share.google/ON12L5bnGLdQMoeWD" target="_blank" class="google-link">Read All Reviews ↗</a>
+      </div>
+    </div>
+
+    <div class="reviews-divider"></div>
+
+    <div class="reviews-carousel">
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"Absolutely incredible experience. My brows have never looked better — so natural and perfectly shaped. I won't go anywhere else!"</p>
+        <p class="review-author">Sarah M.</p>
+        <p class="review-service">Brow Lamination</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"The lash lift completely transformed my eyes. The results were stunning and lasted so much longer than I expected. Highly recommend!"</p>
+        <p class="review-author">Jessica T.</p>
+        <p class="review-service">Lash Lift & Tint</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"My powder brows are everything I dreamed of. The attention to detail and care put into the service was above and beyond."</p>
+        <p class="review-author">Amanda R.</p>
+        <p class="review-service">Powder Brows — PMU</p>
+      </div>
+    </div>
+
+    <div class="reviews-cta reveal">
+      <p>These are sample reviews — replace them with your real Google reviews, or send clients directly to your Google page.</p>
+      <a href="https://share.google/ON12L5bnGLdQMoeWD" target="_blank" class="google-link">View All Google Reviews ↗</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- BOOK BANNER -->
+<div class="book-banner">
+  <p class="book-banner-label">Ready to glow?</p>
+  <h2 class="book-banner-title">Book Your<br><em>Appointment</em></h2>
+  <a href="tel:2504427850" class="book-btn">Call to Book</a>
+  <p class="book-contact">Or reach us at <a href="tel:2504427850">250-442-7850</a> &nbsp;·&nbsp; <a href="https://instagram.com/sg.esthetics.salon" target="_blank">@sg.esthetics.salon</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SG <em>Esthetics</em></div>
+  <p class="footer-tagline">Lash &nbsp;·&nbsp; Brow &nbsp;·&nbsp; Waxing &nbsp;·&nbsp; Nails &nbsp;·&nbsp; PMU</p>
+  <div class="footer-links">
+    <a href="#lash">Lash</a>
+    <a href="#brow">Brow</a>
+    <a href="#wax">Wax</a>
+    <a href="#pmu">PMU</a>
+    <a href="tel:2504427850">250-442-7850</a>
+    <a href="https://instagram.com/sg.esthetics.salon" target="_blank">Instagram</a>
+  </div>
+  <p class="footer-gst">Prices do not include GST &nbsp;·&nbsp; Interior Health Approved</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i * 0.05) + 's';
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
